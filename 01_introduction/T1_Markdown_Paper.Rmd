@@ -1,0 +1,39 @@
+---
+title: "Using Latex in R"
+author: "A. Simpleton"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introdution
+
+First let's simulate some data.
+
+```{r echo=TRUE}
+n <- 50
+x <- seq(1, n)
+a.true <- 3
+b.true <- 1.5
+y.true <- a.true + b.true * x
+s.true <- 17.3
+y <- y.true + s.true * rnorm(n)
+```
+
+Before we estimate the linear expression $y_t = x_t^{\top} \beta + \varepsilon_t$ using the `lm` command in R.
+
+```{r echo=FALSE}
+out1 <- lm(y ~ x)
+summary(out1)
+```
+
+A figure is then produced by the following code:
+
+```{r echo=FALSE}
+plot(x, y)
+abline(out1)
+```
+
+For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
